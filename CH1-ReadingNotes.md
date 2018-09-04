@@ -72,13 +72,41 @@
   - define ways in which the resources are used to solve users' computing problems'
   - Ex: Word processors, spreadsheets. compliers, web browsers
 - **The Operating System**
-  - Co
+  - Controls hardware
+  - Manages Resources
+
+> An operating System is similar to a government. Like a government, it performs no useful function by itself.
 
 ### User View
 
+***The User view varies according t the interface being used***
+
+- Laptops and Desktops are optimized for single use(one user at a time). So their OS's are:
+  - designed for *ease of use*
+  - designed with performance and security focuses
+  - no focus on **resource utilization**
+
+Some devices offer little to no user view, i.e ***embedded computers***
+
 ### System View
 
+The Operating System is most intimately involved with the hardware as a ***resource allocator***.
+
+Many resources are involved in problem solving:
+
+- CPU Time
+- Memory Space
+- Storage space
+- I/O Devices
+- etc.
+
+The OS arbitrates over all the requests and organizes them to operate the system efficiently and fairly.
+
+A Operating system is a **Control Program**. A Control Program manages the execution of ser programs to prevent errors and improper use of the computer.
+
 ### Defining Operating Systems
+
+Operating Systems are varied and many because of the multitude of designs and uses of computers.
 
 ## Computer-System Organization
 
