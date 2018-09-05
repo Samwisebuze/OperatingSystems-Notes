@@ -106,14 +106,79 @@ A Operating system is a **Control Program**. A Control Program manages the execu
 
 ### Defining Operating Systems
 
-Operating Systems are varied and many because of the multitude of designs and uses of computers.
+Operating Systems are many and varied because of the multitude of designs and uses for computers.
+
+How can we define what an operating system is?
+
+- Operating systems exist because they offer a reasonable way to solve the problem of creating a useable computing system.
+  - Goal: utilize hardware _==>_ execute programs _==>_ _**make problem solving easier**_
+
+> Since bad hardware alone is not particularly useful, application programs are developed.
+
+A _common definition_ is is that the operating system is the one program running at all time on the computer - commonly know as the **kernel**.
+
+Along with the _kernel_ there are two other types of programs:
+
+- **System Programs**
+  - associated with operating system but are not necessarily part of the kernel
+- **Application Programs**
+  - include all programs not associated with the operation of the system
+  - require OSs for common operating methods like controlling I/O and allocating system resources.
+
+**Middleware** - a set of software frameworks that provide additional services to application developers.
+
+- packaged with a kernel to support things like:
+  - databases
+  - multimedia
+  - graphics
+
+***Summary***:
+
+- An OS includes
+  - a Kernel
+    - always running
+  - Middleware frameworks
+    - to ease application development
+  - system programs
+    - aid in managing the system at runtime
 
 ## Computer-System Organization
 
+Modern general purpose computer contain [1,n) CPUs and a number of other device controllers connected through a common bus
+
+A **Bus** connects multiple hardware pieces and provides access between these components and shared memory.
+
+Device controllers are in charge of specific types of devices (disk drive, graphics displays, memory, etc.), and usually have:
+
+- Local buffer storage
+- special purpose registers
+
+The device controller is responsible for moving data between its devices and its local storage buffer.
+
+A **Device Driver** is common in many OSs and is available for each device controller. A _device driver_:
+
+- understands the device controller
+- provides the rest of an OS with a uniform interface for that controller
+
+The CPU and device controllers can run in parallel.
+
 ### Interrupts
+
+Consider a typical computer operation: I/O
+
+To start I/O:
+
+- the driver loads the controller's registers
+- the controller examines register contents to determine an action (i.e "read a character")
+- Controller starts a transfer to the local buffer
+- On completing, the controller informs the driver
+- the driver then gives controller to other parts of the OS
+
+So how does the controller inform the driver that it has completed its task? ***Interrupts***
 
 #### Overview
 
+Hardware may trigger an interrupt at any time, via a system bus
 #### Implementation
 
 ### Storage Structure
