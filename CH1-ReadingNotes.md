@@ -179,6 +179,7 @@ So how does the controller inform the driver that it has completed its task? ***
 #### Overview
 
 Hardware may trigger an interrupt at any time, via a system bus
+
 #### Implementation
 
 ### Storage Structure
