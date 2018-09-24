@@ -178,9 +178,41 @@ So how does the controller inform the driver that it has completed its task? ***
 
 #### Overview
 
-Hardware may trigger an interrupt at any time, via a system bus
+Hardware may trigger an interrupt at any time, via a system bus. There may be many buses within a system, but the **system bus is the main communications path between major components.**
+
+_Interrupts are a key part of how Operating Systems and Hardware interact._
+
+When the CPU is interrupted, it stops executing and immediately transfers execution to a _fixed location_. The fixed location usually contains address where the service routine for the interrupt is located. The interrupt service routing is executed, then the CPU resumes the interrupted execution.
+
+Interrupts are important to computer architecture and while many have their own interrupt mechanisms they chare several common functions.
+
+Interrupts must be handed quickly, as _they occur very frequently_.
+
+- A array of pointers to interrupt routines is kept for speed
+  - The routines are called indirectly through this array
+  - This is usually kept in low memory (first hundred locations)
+
+This **interrupt vector** is indexed by a unique number, along with the interrupt request, to provide an address to the interrupt service routines
+
+Interrupt architecture must also save state information, so it can later restore interrupted processes. 
 
 #### Implementation
+
+Interrupts work as follow:
+
+- The CPU has an **interrupt-request-line** that senses every after every executing instruction
+  - When the CPU detects a signal from a controller it:
+    - Reads in the interrupt number and jumps tp the **interrupt-handler-routine**, 
+    using the interrupt number as an index in the _interrupt vector_
+    - It then starts execution at that address
+  - The interrupt handler:
+    - Saves and state it will be changing during its operation
+    - determines the cause of the interrupt
+    - performs the necessary processing
+    - performs a state restore
+    - executes a **return_from_interrupt** to return the CPU to the execution state prior ti the interrupt
+
+A device controller _raises_ an interrupt by asserting a signal on the interrupt-request-line, the CPU _catches_ an interrupt and _dispatches_ it to the interrupt handler, and the handler _clears_ the interrupt by servicing the device.
 
 ### Storage Structure
 
