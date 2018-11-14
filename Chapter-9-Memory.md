@@ -89,6 +89,15 @@ The binding of instructions and data to memory addresses can be done at any step
 
 ![Figure 9.3](./static/figure9-3.png)
 
+- **Load Time**
+  - If it is not known at compile time where the process will reside in memory, the compiler must generate **relocatable code**
+  - Final binding is delayed until load time
+  - If the starting address changes, only need to reload the user code to incorporated this changed value
+- **Execution Time**
+  - If the process can be moved during its execution from one memory segment to another, then binding is delayed until run time.
+  - Special hardware must be available for this scheme to work.
+  - _Most operating systems use this method_
+
 ### 9.1.2 Logical Versus Physical Address Space
 
 ### 9.1.4 Dynamic Loading
